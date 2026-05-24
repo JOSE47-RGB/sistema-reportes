@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,5 +24,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/importar-csv', [ImportController::class, 'import'])
         ->name('import.csv');
 });
+
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard-datos', [DashboardController::class, 'index'])
+        ->name('dashboard.datos');
+});
+
+
 
 require __DIR__.'/auth.php';
