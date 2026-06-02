@@ -127,19 +127,19 @@
         </div>
 
         <a href="{{ route('dashboard.datos') }}" class="sidebar-link">
-            📊 Dashboard
+            Dashboard
         </a>
 
         <a href="{{ route('dashboard') }}" class="sidebar-link active">
-            📂 Importar Archivo
+            Importar Archivo
         </a>
 
         <a href="#" class="sidebar-link">
-            📈 Reportes
+            Reportes
         </a>
 
         <a href="#" class="sidebar-link">
-            ⚙️ Configuración
+            Configuración
         </a>
 
         <!-- CERRAR SESIÓN -->
@@ -149,7 +149,7 @@
                 @csrf
 
                 <button type="submit" class="logout-btn w-100">
-                    🚪 Cerrar sesión
+                    Cerrar sesión
                 </button>
             </form>
 
@@ -192,7 +192,7 @@
                     <div class="upload-box">
 
                         <div class="upload-icon mb-3">
-                            📁
+                            
                         </div>
 
                         <h5 class="mb-3">
@@ -213,7 +213,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-upload">
-                            ⬆️ Cargar archivo completo
+                             Cargar archivo completo
                         </button>
 
                     </div>
