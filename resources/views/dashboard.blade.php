@@ -21,6 +21,7 @@
             color: white;
             position: fixed;
             transition: 0.3s;
+            z-index: 1000;
         }
 
         #sidebar.collapsed {
@@ -50,10 +51,15 @@
             color: #0d6efd;
         }
 
+        .sidebar-link.active {
+            background: #0d6efd;
+        }
+
         .card-custom {
             border: none;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: white;
         }
 
         .topbar {
@@ -79,6 +85,35 @@
             font-size: 22px;
             font-weight: bold;
         }
+
+        .upload-box {
+            border: 2px dashed #ced4da;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: #0d6efd;
+            background: #f0f7ff;
+        }
+
+        .upload-icon {
+            font-size: 50px;
+        }
+
+        .btn-upload {
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .file-info {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
     </style>
 </head>
 
@@ -91,12 +126,23 @@
             <span class="logo">Sistema</span>
         </div>
 
-        <a href="{{ route('dashboard.datos') }}" class="sidebar-link">📊 Dashboard</a>
-        <a href="#" class="sidebar-link">📂 Importar Archivo</a>
-        <a href="#" class="sidebar-link">📈 Reportes</a>
-        <a href="#" class="sidebar-link">⚙️ Configuración</a>
+        <a href="{{ route('dashboard.datos') }}" class="sidebar-link">
+            📊 Dashboard
+        </a>
 
-        <!-- BOTÓN CERRAR SESIÓN -->
+        <a href="{{ route('dashboard') }}" class="sidebar-link active">
+            📂 Importar Archivo
+        </a>
+
+        <a href="#" class="sidebar-link">
+            📈 Reportes
+        </a>
+
+        <a href="#" class="sidebar-link">
+            ⚙️ Configuración
+        </a>
+
+        <!-- CERRAR SESIÓN -->
         <div class="position-absolute bottom-0 w-100 p-3">
 
             <form method="POST" action="{{ route('logout') }}">
@@ -132,29 +178,45 @@
             <div class="card-body">
 
                 <h3 class="mb-4">
-                    Importar archivo CSV
+                    Importar Archivo
                 </h3>
+
+                <p class="text-muted">
+                    El sistema soporta archivos CSV, TXT, XLSX y XLS.
+                </p>
 
                 <!-- FORMULARIO -->
                 <form action="{{ route('import.csv') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="mb-3">
-                        <label class="form-label">
-                            Seleccionar archivo
-                        </label>
+                    <div class="upload-box">
+
+                        <div class="upload-icon mb-3">
+                            📁
+                        </div>
+
+                        <h5 class="mb-3">
+                            Selecciona un archivo
+                        </h5>
 
                         <input 
                             type="file" 
                             name="archivo" 
                             required 
-                            class="form-control"
+                            class="form-control mb-3"
+                            accept=".csv,.txt,.xlsx,.xls"
                         >
-                    </div>
 
-                    <button type="submit" class="btn btn-primary">
-                        ⬆️ Cargar archivo completo
-                    </button>
+                        <div class="file-info mb-3">
+                            Formatos permitidos:
+                            CSV, TXT, XLSX, XLS
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-upload">
+                            ⬆️ Cargar archivo completo
+                        </button>
+
+                    </div>
                 </form>
 
                 <!-- MENSAJES -->
@@ -181,7 +243,7 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Sidebar JS -->
+    <!-- SIDEBAR JS -->
     <script>
         function toggleSidebar() {
 
