@@ -98,7 +98,7 @@ class ImportController extends Controller
             throw new \Exception('No existe el script Python: ' . $script);
         }
 
-        $comando = 'python3 ' .
+        $comando = 'py ' .
             escapeshellarg($script) . ' ' .
             escapeshellarg($rutaEntrada) . ' ' .
             escapeshellarg($carpetaSalida) . ' 2>&1';
@@ -183,13 +183,13 @@ class ImportController extends Controller
             $total++;
 
             if (count($lote) >= $tamanoLote) {
-                DB::table($tabla)->insert($lote);
+                DB::table($tabla)->insertOrIgnore($lote);
                 $lote = [];
             }
         }
 
         if (!empty($lote)) {
-            DB::table($tabla)->insert($lote);
+            DB::table($tabla)->insertOrIgnore($lote);
         }
 
         fclose($handle);
