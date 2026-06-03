@@ -61,15 +61,18 @@
 <div id="sidebar">
     <h3 class="text-center py-3 border-bottom">Sistema</h3>
 
-    <a href="{{ route('dashboard.datos') }}" class="sidebar-link active">📊 Dashboard</a>
-    <a href="{{ route('dashboard') }}" class="sidebar-link">📂 Importar Archivo</a>
-    <a href="#" class="sidebar-link">📈 Reportes</a>
-    <a href="#" class="sidebar-link">⚙️ Configuración</a>
+    <a href="{{ route('dashboard.datos') }}" class="sidebar-link active">Dashboard</a>
+    <a href="{{ route('dashboard') }}" class="sidebar-link"> Importar Archivo</a>
+    <a href="{{ route('dashboard.vistas') }}" class="sidebar-link">
+    Vistas BI
+</a>
+    <a href="#" class="sidebar-link"> Reportes</a>
+    <a href="#" class="sidebar-link"> Configuración</a>
 
     <div class="position-absolute bottom-0 w-100 p-3">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button class="btn btn-danger w-100">🚪 Cerrar sesión</button>
+            <button class="btn btn-danger w-100"> Cerrar sesión</button>
         </form>
     </div>
 </div>

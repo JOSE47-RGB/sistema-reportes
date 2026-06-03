@@ -35,4 +35,16 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+
+
+
+use App\Http\Controllers\DashboardVistasController;
+
+Route::get('/dashboard-vistas',
+    [DashboardVistasController::class, 'index']
+)->middleware(['auth'])
+ ->name('dashboard.vistas');
+
+
+
 require __DIR__.'/auth.php';
